@@ -12,11 +12,15 @@ public class MainPresenter implements MainMVP.Presenter {
     private MainMVP.Interactor interactor;
 
 
-    public MainPresenter(MainMVP.View view, MainMVP.Interactor interactor) {
-        this.view = view;
+    public MainPresenter(MainMVP.Interactor interactor) {
         //interactor =new MainInteractor();
         this.interactor=interactor;
     }
+
+    public void setView(MainMVP.View view) {
+        this.view = view;
+    }
+
 
     @Override
     public void loadArticle(int page, int limit) {

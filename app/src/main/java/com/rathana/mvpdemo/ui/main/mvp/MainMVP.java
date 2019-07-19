@@ -14,6 +14,7 @@ public interface MainMVP {
     interface Presenter{
         void loadArticle(int page,int limit);
         void onDestroy();
+        void setView(View view);
     }
     interface Interactor{
         void loadArticle(

@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.rathana.mvpdemo.R;
 import com.rathana.mvpdemo.adapter.AmsAdapter;
+import com.rathana.mvpdemo.base.BaseActivity;
 import com.rathana.mvpdemo.entity.Article;
 import com.rathana.mvpdemo.ui.main.mvp.MainMVP;
 import com.rathana.mvpdemo.ui.main.mvp.MainPresenter;
@@ -15,20 +16,26 @@ import com.rathana.mvpdemo.ui.main.mvp.MainPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity 
+import javax.inject.Inject;
+
+public class MainActivity extends BaseActivity
 implements MainMVP.View {
 
     AmsAdapter amsAdapter;
     List<Article> articles=new ArrayList<Article>();
     RecyclerView rvArticle;
 
-    private MainMVP.Presenter presenter;
+    @Inject
+    MainMVP.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //presenter= new MainPresenter(this);
+        getComponent().inject(this);
+        this.presenter.setView(this);
+
         initUI();
         getData();
     }

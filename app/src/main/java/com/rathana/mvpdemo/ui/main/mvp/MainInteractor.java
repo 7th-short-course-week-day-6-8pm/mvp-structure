@@ -8,21 +8,24 @@ import com.rathana.mvpdemo.entity.ArticleResponse;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
-import io.reactivex.subscribers.DefaultSubscriber;
 import io.reactivex.subscribers.DisposableSubscriber;
 
 public class MainInteractor implements MainMVP.Interactor {
 
     //todo create object Article service
 
+    @Inject
     ArticleService articleService;
-
     private CompositeDisposable disposable=new CompositeDisposable();
+
+    @Inject
     public MainInteractor() {
-        articleService= ServiceGenerator.createService(ArticleService.class);
+        //articleService= ServiceGenerator.createService(ArticleService.class);
     }
 
     @Override
